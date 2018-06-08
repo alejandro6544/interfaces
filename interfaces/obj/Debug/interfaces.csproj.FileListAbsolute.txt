@@ -1,1 +1,10 @@
 c:\users\alejo\documents\visual studio 2015\Projects\interfaces\interfaces\bin\Debug\interfaces.exe.config
+C:\Users\dacastro\Documents\GitHub\interfaces\interfaces\bin\Debug\interfaces.exe.config
+C:\Users\dacastro\Documents\GitHub\interfaces\interfaces\bin\Debug\interfaces.exe
+C:\Users\dacastro\Documents\GitHub\interfaces\interfaces\bin\Debug\interfaces.pdb
+C:\Users\dacastro\Documents\GitHub\interfaces\interfaces\obj\Debug\interfaces.csprojResolveAssemblyReference.cache
+C:\Users\dacastro\Documents\GitHub\interfaces\interfaces\obj\Debug\interfaces.Form1.resources
+C:\Users\dacastro\Documents\GitHub\interfaces\interfaces\obj\Debug\interfaces.Properties.Resources.resources
+C:\Users\dacastro\Documents\GitHub\interfaces\interfaces\obj\Debug\interfaces.csproj.GenerateResource.Cache
+C:\Users\dacastro\Documents\GitHub\interfaces\interfaces\obj\Debug\interfaces.exe
+C:\Users\dacastro\Documents\GitHub\interfaces\interfaces\obj\Debug\interfaces.pdb
