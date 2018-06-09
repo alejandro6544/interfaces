@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Runtime.InteropServices;
 
 namespace interfaces
 {
@@ -44,6 +45,27 @@ namespace interfaces
         private void menuVertical_Paint(object sender, PaintEventArgs e)
         {
 
+        }
+
+        [DllImport("user32.DLL", EntryPoint = "ReleaseCapture")]
+        private extern static void ReleaseCapture();
+        [DllImport("user32.DLL", EntryPoint = "SendMessage")]
+        private extern static void SendMessage(System.IntPtr hMnd,int wMsg, int wParam, int IParam);
+
+        private void barraTitulo_MouseDown(object sender, MouseEventArgs e)
+        {
+            ReleaseCapture();
+            SendMessage(this.Handle, 0x112, 0xf012, 0);
+        }
+
+        private void btnReportes_Click(object sender, EventArgs e)
+        {
+            panelSubReporte.Visible = true;
+        }
+
+        private void btnrepEstudiantes_Click(object sender, EventArgs e)
+        {
+            panelSubReporte.Visible = false;
         }
     }
 }
