@@ -16,3 +16,6 @@ C:\Users\Alejo\documents\visual studio 2015\Projects\interfaces\interfaces\obj\D
 C:\Users\Alejo\documents\visual studio 2015\Projects\interfaces\interfaces\obj\Debug\interfaces.Form1.resources
 C:\Users\Alejo\documents\visual studio 2015\Projects\interfaces\interfaces\obj\Debug\interfaces.Properties.Resources.resources
 C:\Users\Alejo\documents\visual studio 2015\Projects\interfaces\interfaces\obj\Debug\interfaces.csproj.GenerateResource.Cache
+C:\Users\Alejo\documents\visual studio 2015\Projects\interfaces\interfaces\bin\Debug\MySql.Data.dll
+C:\Users\Alejo\documents\visual studio 2015\Projects\interfaces\interfaces\bin\Debug\MySql.Data.xml
+C:\Users\Alejo\documents\visual studio 2015\Projects\interfaces\interfaces\obj\Debug\interfaces.vistas.InsertStudent.resources

@@ -67,5 +67,24 @@ namespace interfaces
         {
             panelSubReporte.Visible = false;
         }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            abrirFormulario(new vistas.InsertStudent());
+        }
+        private void abrirFormulario(object objForm)
+        {
+            if (this.panelcontenedor.Controls.Count > 0)
+            {
+                this.panelcontenedor.Controls.RemoveAt(0);
+            }
+            Form fh = objForm as Form;
+            fh.TopLevel = false;
+            fh.Dock = DockStyle.Fill;
+            this.panelcontenedor.Controls.Add(fh);
+            this.panelcontenedor.Tag = fh;
+            fh.Show();
+        }
+
     }
 }
