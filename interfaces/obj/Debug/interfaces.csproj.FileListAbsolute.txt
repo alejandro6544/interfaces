@@ -19,3 +19,5 @@ C:\Users\Alejo\documents\visual studio 2015\Projects\interfaces\interfaces\obj\D
 C:\Users\Alejo\documents\visual studio 2015\Projects\interfaces\interfaces\bin\Debug\MySql.Data.dll
 C:\Users\Alejo\documents\visual studio 2015\Projects\interfaces\interfaces\bin\Debug\MySql.Data.xml
 C:\Users\Alejo\documents\visual studio 2015\Projects\interfaces\interfaces\obj\Debug\interfaces.vistas.InsertStudent.resources
+C:\Users\dacastro\Documents\GitHub\interfaces\interfaces\bin\Debug\MySql.Data.xml
+C:\Users\dacastro\Documents\GitHub\interfaces\interfaces\obj\Debug\interfaces.vistas.InsertStudent.resources
