@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using MySql.Data.MySqlClient;
+using System.Data.SqlClient;
 
 namespace interfaces.modelo
 {
@@ -122,23 +123,74 @@ namespace interfaces.modelo
             Controller.DBConnect objBD = new Controller.DBConnect();
             if (objBD.openConnection())
             {
-                if (objE.getRutaFotoEstudiante().Equals("0"))
+                if (objE.getRutaFotoEstudiante().Equals("0")) //tener en cuenta que guardar la foto no se ha implementado
                 {
                     sql = "INSERT INTO estudiantes (idestudiantes, codigoestudiante, nombreestudiante, apellidoestudiante, telefonoestudiante, direccionestudiante, correoestudiante)" +
                         "VALUES ('"+objE.getIdEstudiante()+"', '"+objE.getCodigoEstudiante()+"', '"+objE.getNombreEstudiante()+"', '"+
                         objE.getApellidoEstudiante()+"', '"+objE.getTelefonoEstudiante()+"', '"+objE.getDireccionEstudiante() +"', '"+objE.getCorreoEstudiante()+"')";
-
                     MySqlCommand cmd = new MySqlCommand(sql, objBD.getConnection());
                     cmd.ExecuteNonQuery();
-
-
                     resultado = true;
 
                 }
             }
-            
-
             return resultado;
+        }
+
+        //Se busca un estudiante por medio del código
+        public Estudiante buscarEstudiante(String codigoE)
+        {
+            Estudiante objE=null;
+            String sql = "Select * from estudiantes where codigoestudiante= '"+codigoE+"'";
+            Controller.DBConnect objBD = new Controller.DBConnect();
+            MySqlCommand cmd = new MySqlCommand();
+
+            MySqlDataReader reader;
+            if (objBD.openConnection())
+            {
+                cmd.CommandText = sql;
+                cmd.Connection = objBD.getConnection();
+                reader = cmd.ExecuteReader();
+                if (reader != null)
+                {
+                    while (reader.Read())
+                    {
+                        String idestudiante = reader.GetString(0);
+                        String codigoestudiante = reader.GetString(1);
+                        String nombreestudiante = reader.GetString(2);
+                        String apellidoestudiante = reader.GetString(3);
+                        String telefonoestudiante = reader.GetString(4);
+                        String direccionestudiante = reader.GetString(5);
+                        String correoestudiante = reader.GetString(6);
+                        String rutafotoestudiante = "0";
+
+                        objE = new Estudiante(idestudiante, codigoestudiante, nombreestudiante, apellidoestudiante,
+                                telefonoestudiante, direccionestudiante, correoestudiante, rutafotoestudiante);
+                    }
+                }
+                
+            }
+
+
+                return objE;
+        }
+
+        public bool modificarEstudiante(Estudiante objE, String cod)
+        {
+            bool resultado = false;
+            String sql = "UPDATE estudiantes SET nombreestudiante = '" + objE.getNombreEstudiante() + "', apellidoestudiante = '" + objE.getApellidoEstudiante()+"', telefonoestudiante= '"+objE.getTelefonoEstudiante()+"', " +
+                "direccionestudiante= '"+objE.getDireccionEstudiante()+"', correoestudiante='"+objE.getCorreoEstudiante()+ "' WHERE codigoestudiante= '"+cod+"'";
+            Controller.DBConnect objBD = new Controller.DBConnect();
+            MySqlCommand cmd = new MySqlCommand();
+            if (objBD.openConnection())
+            {
+
+                cmd = new MySqlCommand(sql, objBD.getConnection());
+                cmd.ExecuteNonQuery();
+                resultado = true;
+            }
+
+                return resultado;
         }
 
         #endregion

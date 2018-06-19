@@ -70,7 +70,8 @@ namespace interfaces
 
         private void button1_Click(object sender, EventArgs e)
         {
-            abrirFormulario(new vistas.InsertStudent());
+            panelEstudiante.Visible = true;
+           
         }
         private void abrirFormulario(object objForm)
         {
@@ -86,5 +87,18 @@ namespace interfaces
             fh.Show();
         }
 
+        private void button3_Click(object sender, EventArgs e)
+        {
+            abrirFormulario(new vistas.InsertStudent());
+            panelEstudiante.Visible = false;
+
+        }
+
+        private void button4_Click(object sender, EventArgs e)
+        {
+
+            abrirFormulario(new vistas.UpdateStudent());
+            panelEstudiante.Visible = false;
+        }
     }
 }
