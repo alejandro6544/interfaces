@@ -25,7 +25,7 @@ namespace interfaces.Controller
         private void Initialize()
         {
             server = "localhost";
-            database = "infolab";
+            database = "uao";
             uid = "root";
             pass = "root";
 
@@ -36,7 +36,7 @@ namespace interfaces.Controller
         #endregion
 
         #region Abrir conexión
-        private bool openConnection()
+        public bool openConnection()
         {
             try
             {
@@ -60,8 +60,13 @@ namespace interfaces.Controller
         }
         #endregion
 
+        public MySqlConnection getConnection()
+        {
+            return connection;
+        }
+
         #region Cerrar la conexión
-        private bool closeConnection()
+        public bool closeConnection()
         {
             try
             {
