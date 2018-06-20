@@ -30,8 +30,6 @@ namespace interfaces.vistas
             txtDireccion.Text = l.ElementAt(5);
             txtCorreo.Text = l.ElementAt(6);
 
-
-
         }
 
         private void btnAceptarE_Click(object sender, EventArgs e)

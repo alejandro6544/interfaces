@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using MySql.Data.MySqlClient;
 using System.Data.SqlClient;
+using System.Drawing;
 
 namespace interfaces.modelo
 {
@@ -132,6 +133,31 @@ namespace interfaces.modelo
                     cmd.ExecuteNonQuery();
                     resultado = true;
 
+                }
+                else
+                {
+                    
+                    Image img = Image.FromFile(@objE.getRutaFotoEstudiante());
+                    //  Console.WriteLine("rutafotoestudiante imagen "  + objE.getRutaFotoEstudiante());
+                    byte[] arr;
+                    ImageConverter converter = new ImageConverter();
+                    arr = (byte[])converter.ConvertTo(img, typeof(byte[]));
+                    //MySqlParameter blob = new MySqlParameter("@imagenestudiante", MySqlDbType.Blob, arr.Length);
+                    //blob.Value = arr;
+                    sql = "INSERT INTO estudiantes (idestudiantes, codigoestudiante, nombreestudiante, apellidoestudiante, telefonoestudiante, direccionestudiante, correoestudiante, imagenestudiante)" +
+                                            "VALUES (@idestudiantes, @codigoestudiante, @nombreestudiante, @apellidoestudiante, @telefonoestudiante, @direccionestudiante, @correoestudiante, @imagenestudiante)";
+                    MySqlCommand cmd = new MySqlCommand(sql, objBD.getConnection());
+                    cmd.Parameters.AddWithValue("@idestudiantes", objE.getIdEstudiante());
+                    cmd.Parameters.AddWithValue("@codigoestudiante", objE.getCodigoEstudiante());
+                    cmd.Parameters.AddWithValue("@nombreestudiante", objE.getNombreEstudiante());
+                    cmd.Parameters.AddWithValue("@apellidoestudiante", objE.getApellidoEstudiante());
+                    cmd.Parameters.AddWithValue("@telefonoestudiante", objE.getTelefonoEstudiante());
+                    cmd.Parameters.AddWithValue("@direccionestudiante", objE.getDireccionEstudiante());
+                    cmd.Parameters.AddWithValue("@correoestudiante", objE.getCorreoEstudiante());
+                    cmd.Parameters.AddWithValue("@imagenestudiante", arr);
+                    cmd.ExecuteNonQuery();
+                    objBD.closeConnection();
+                    resultado = true;
                 }
             }
             return resultado;
