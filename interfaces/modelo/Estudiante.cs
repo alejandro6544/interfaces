@@ -117,6 +117,7 @@ namespace interfaces.modelo
         #endregion
 
         #region Métodos de Base de Datos
+        //insertar imagen 
         public bool insertEstudiante(Estudiante objE)
         {
             bool resultado = false;
@@ -124,7 +125,7 @@ namespace interfaces.modelo
             Controller.DBConnect objBD = new Controller.DBConnect();
             if (objBD.openConnection())
             {
-                if (objE.getRutaFotoEstudiante().Equals("0")) //tener en cuenta que guardar la foto no se ha implementado
+                if (objE.getRutaFotoEstudiante().Equals("0")) 
                 {
                     sql = "INSERT INTO estudiantes (idestudiantes, codigoestudiante, nombreestudiante, apellidoestudiante, telefonoestudiante, direccionestudiante, correoestudiante)" +
                         "VALUES ('"+objE.getIdEstudiante()+"', '"+objE.getCodigoEstudiante()+"', '"+objE.getNombreEstudiante()+"', '"+
@@ -219,6 +220,20 @@ namespace interfaces.modelo
                 return resultado;
         }
 
+        //buscar a todos los estudiantes
+        public MySqlDataAdapter buscarTodoslosEstudiantes()
+        {
+            Controller.DBConnect objBD = new Controller.DBConnect();
+            MySqlCommand cmd = new MySqlCommand();
+            String sql = "Select idestudiantes as Identificación_Estudiante, codigoestudiante as Código_Estudiante, nombreestudiante, apellidoestudiante, telefonoestudiante, direccionestudiante, correoestudiante  from estudiantes";
+            MySqlDataAdapter mdaDatos=null;
+            if (objBD.openConnection())
+            {
+                mdaDatos = new MySqlDataAdapter(sql, objBD.getConnection());
+
+            }
+                return mdaDatos;
+        }
         #endregion
     }
 }

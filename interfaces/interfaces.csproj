@@ -63,6 +63,12 @@
     <Compile Include="modelo\Estudiante.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="vistas\ConsultasE.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="vistas\ConsultasE.Designer.cs">
+      <DependentUpon>ConsultasE.cs</DependentUpon>
+    </Compile>
     <Compile Include="vistas\InsertStudent.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -87,6 +93,9 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="vistas\ConsultasE.resx">
+      <DependentUpon>ConsultasE.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="vistas\InsertStudent.resx">
       <DependentUpon>InsertStudent.cs</DependentUpon>
     </EmbeddedResource>
@@ -106,7 +115,9 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <WCFMetadata Include="Service References\" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

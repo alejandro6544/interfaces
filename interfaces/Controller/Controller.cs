@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Data;
+using MySql.Data.MySqlClient;
 
 namespace interfaces.Controller
 {
@@ -41,6 +43,18 @@ namespace interfaces.Controller
             bool resu = objEl.modificarEstudiante(objE, cod);
 
             return resu;
+        }
+
+        public DataTable buscarTodoslosEstudiantes()
+        {
+            // Se crea un DataTable que almacenará los datos desde donde se cargaran los datos al DataGridView
+            DataTable dtDatos = new DataTable();
+            modelo.Estudiante objEl = new modelo.Estudiante();
+            MySqlDataAdapter mdaDatos = objEl.buscarTodoslosEstudiantes();
+            // Con la información del adaptador se rellena el DataTable
+            mdaDatos.Fill(dtDatos);
+
+            return dtDatos;
         }
 
 

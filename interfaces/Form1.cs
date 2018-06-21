@@ -65,7 +65,9 @@ namespace interfaces
 
         private void btnrepEstudiantes_Click(object sender, EventArgs e)
         {
+            abrirFormulario(new vistas.ConsultasE());
             panelSubReporte.Visible = false;
+            
         }
 
         private void button1_Click(object sender, EventArgs e)
