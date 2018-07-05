@@ -22,14 +22,19 @@ namespace interfaces.vistas
             Controller.Controller objC = new Controller.Controller();
             String cod = txtCodigoB.Text;
             LinkedList<String> l= objC.buscarEstudiante(cod);
-            txtId.Text= l.ElementAt(0);
-            txtCodigo.Text = l.ElementAt(1);
-            txtNombre.Text = l.ElementAt(2);
-            txtApellido.Text = l.ElementAt(3);
-            txtTelefono.Text = l.ElementAt(4);
-            txtDireccion.Text = l.ElementAt(5);
-            txtCorreo.Text = l.ElementAt(6);
-
+            if (l != null)
+            {
+                txtId.Text = l.ElementAt(0);
+                txtCodigo.Text = l.ElementAt(1);
+                txtNombre.Text = l.ElementAt(2);
+                txtApellido.Text = l.ElementAt(3);
+                txtTelefono.Text = l.ElementAt(4);
+                txtDireccion.Text = l.ElementAt(5);
+                txtCorreo.Text = l.ElementAt(6);
+            }else
+            {
+                MessageBox.Show("No se encontro el usuario, verifique el número de identificación!!!");
+            }
         }
 
         private void btnAceptarE_Click(object sender, EventArgs e)

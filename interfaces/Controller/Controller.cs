@@ -25,15 +25,19 @@ namespace interfaces.Controller
             modelo.Estudiante objEl = new modelo.Estudiante();
             modelo.Estudiante objE1 = objEl.buscarEstudiante(cod);
             LinkedList<String> listaS = new LinkedList<String>();
-
-            listaS.AddLast(objE1.getIdEstudiante());
-            listaS.AddLast(objE1.getCodigoEstudiante());
-            listaS.AddLast(objE1.getNombreEstudiante());
-            listaS.AddLast(objE1.getApellidoEstudiante());
-            listaS.AddLast(objE1.getTelefonoEstudiante());
-            listaS.AddLast(objE1.getDireccionEstudiante());
-            listaS.AddLast(objE1.getCorreoEstudiante());
-
+            if (objE1 != null)
+            {
+                listaS.AddLast(objE1.getIdEstudiante());
+                listaS.AddLast(objE1.getCodigoEstudiante());
+                listaS.AddLast(objE1.getNombreEstudiante());
+                listaS.AddLast(objE1.getApellidoEstudiante());
+                listaS.AddLast(objE1.getTelefonoEstudiante());
+                listaS.AddLast(objE1.getDireccionEstudiante());
+                listaS.AddLast(objE1.getCorreoEstudiante());
+            }else
+            {
+                listaS = null;
+            }
             return listaS;
         }
         //modificar datos de estudiante
@@ -47,7 +51,7 @@ namespace interfaces.Controller
 
         public DataTable buscarTodoslosEstudiantes()
         {
-            // Se crea un DataTable que almacenará los datos desde donde se cargaran los datos al DataGridView
+            // Se crea un DataTable que almacenará los datos desde donde se cargaran al DataGridView
             DataTable dtDatos = new DataTable();
             modelo.Estudiante objEl = new modelo.Estudiante();
             MySqlDataAdapter mdaDatos = objEl.buscarTodoslosEstudiantes();
@@ -57,6 +61,24 @@ namespace interfaces.Controller
             return dtDatos;
         }
 
+        public DataTable matriculaEstudiante(String codigo, String fechaI, String fechaF)
+        {
+            // Se crea un DataTable que almacenará los datos desde donde se cargaran al DataGridView
+            DataTable dtDatos = new DataTable();
+            modelo.Estudiante objEl = new modelo.Estudiante();
+
+            String[] fechaII = fechaI.Split('/');
+            String[] fechaFF = fechaF.Split('/');
+
+            String fechaIII=fechaII[2] + "-" + fechaII[1] + "-" + fechaII[0];
+            String fechaFFF = fechaFF[2] + "-" + fechaFF[1] + "-" + fechaFF[0];
+
+            MySqlDataAdapter mdaDatos = objEl.matriculaEstudiante(codigo, fechaIII, fechaFFF);
+            // Con la información del adaptador se rellena el DataTable
+            mdaDatos.Fill(dtDatos);
+
+            return dtDatos;
+        }
 
     }
 }

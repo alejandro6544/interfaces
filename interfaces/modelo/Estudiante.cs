@@ -202,6 +202,7 @@ namespace interfaces.modelo
                 return objE;
         }
 
+        //UpDate un estudiante 
         public bool modificarEstudiante(Estudiante objE, String cod)
         {
             bool resultado = false;
@@ -225,13 +226,32 @@ namespace interfaces.modelo
         {
             Controller.DBConnect objBD = new Controller.DBConnect();
             MySqlCommand cmd = new MySqlCommand();
-            String sql = "Select idestudiantes as Identificación_Estudiante, codigoestudiante as Código_Estudiante, nombreestudiante, apellidoestudiante, telefonoestudiante, direccionestudiante, correoestudiante  from estudiantes";
+            String sql = "Select idestudiantes as 'Identificación Estudiante', codigoestudiante as 'Código Estudiante', nombreestudiante as Nombre, apellidoestudiante as Apellido, telefonoestudiante as Teléfono, direccionestudiante as Dirección, correoestudiante as Correo from estudiantes";
             MySqlDataAdapter mdaDatos=null;
             if (objBD.openConnection())
             {
                 mdaDatos = new MySqlDataAdapter(sql, objBD.getConnection());
 
             }
+                return mdaDatos;
+        }
+
+        //buscar a los estudiante matriculados en un periodo (una fecha inicio y una fecha fin)
+        public MySqlDataAdapter matriculaEstudiante(String codigo, String fechaI, String fechaF)
+        {
+            Controller.DBConnect objBD = new Controller.DBConnect();
+            MySqlCommand cmd = new MySqlCommand();
+            MySqlDataAdapter mdaDatos = null;
+            String sql = "SELECT nombreCurso as 'Cursos Matriculados' from cursos c, estudiantes e, matriculas m where " +
+                         "e.codigoestudiante = m.codigoestudiantem and m.codigocursom = c.codigocurso and " +
+                         "e.codigoestudiante = '" + codigo + "' and m.fechaMatricula between '" + fechaI + "' and '" + fechaF + "'";
+
+            if (objBD.openConnection())
+            {
+                mdaDatos = new MySqlDataAdapter(sql, objBD.getConnection());
+            }
+
+
                 return mdaDatos;
         }
         #endregion
