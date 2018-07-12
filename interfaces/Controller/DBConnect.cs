@@ -20,7 +20,6 @@ namespace interfaces.Controller
         {
             Initialize();
         }
-
         #region Inicia parametros para conexión
         private void Initialize()
         {
